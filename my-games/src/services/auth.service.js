@@ -8,6 +8,20 @@ class AuthService {
             username,
             password
         });
+        return response;
+    }
+    
+    async register(username, password) {
+        const response = await axios.post(API_URL + "/register", {
+            username,
+            password
+        });
+        return response;
+    }
+
+    async delete(username) {
+        const response = await axios.delete(API_URL + "/delete", { data: {username} });
+        return response
     }
 
 }
