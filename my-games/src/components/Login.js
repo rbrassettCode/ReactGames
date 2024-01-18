@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AuthService from '../services/auth.service';
 
 
-function Login() {
+const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -14,6 +14,10 @@ function Login() {
         try {
             console.log("Login for username: " + username);
             const response = await AuthService.login(username, password);
+            
+            if(response.status === 200) {
+                props.onLogin(response.data)
+            }
         } catch (error) {
             setError('Invalid username or password');
         }
