@@ -6,6 +6,7 @@ import Login from './components/Login';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
+import TicTacToe from './components/TicTacToe';
 
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
       <div>
         <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path='/login' element={<Login onLogin={handleLogin}/>}/>
+          <Route path='/' element={<HomePage/>} />
+          <Route path='/login' element={<Login onLogin={handleLogin}/>} />
           <Route path='/register' element={<Register />} />
+          <Route path='/games/tictactoe' element={<TicTacToe/>} />
         </Routes>
       </div>
     </Router>
