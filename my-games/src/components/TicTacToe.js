@@ -28,6 +28,12 @@ const TicTacToe = () => {
     }
 
     const calculateWinner = (squaresToWin) => {
+        //Check for draw
+        if(!squaresToWin.includes('B')){
+            setWinner('Game Ended in a Draw');
+            console.log('draw found');
+            return 
+        }
         // Define winning combinations (indices in the array)
         const winningCombinations = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -43,7 +49,7 @@ const TicTacToe = () => {
             if (squaresToWin[a] && squaresToWin[a] === squaresToWin[b] && squaresToWin[a] === squaresToWin[c]) {                
                 if(squaresToWin[a] !== 'B') {
                     console.log('winner found');
-                    setWinner(squaresToWin[a]);
+                    setWinner("Winner is: " + squaresToWin[a]);
                 }
             }
         }
@@ -60,7 +66,7 @@ const TicTacToe = () => {
 
     return(
         <div>
-            {winner && <h2>Winner is: {winner}</h2>}
+            {winner && <h2>{winner}</h2>}
 
             <div className="board-row">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)}/>
